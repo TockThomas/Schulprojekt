@@ -5,7 +5,7 @@ public class Board {
 	public static final int LINES = 3;	// festlegung der Zeilenanzahl
 	public static final int ROWS = 3;	// festlegung der Spaltenanzahl
 	public static final int SYMBOLS = 0;	//festlegung der Anzahl an Symbole, die in die Felder eingetragen werden
-	public static final String syms[] = {"A"};	//festlegung der möglichen Symbole
+	public static final String syms[] = {"X", "X", "O"};	//festlegung der möglichen Symbole
 	
 	public Board() {
 		this.board = new String[LINES][ROWS];	// erstellung des Boadrds
@@ -21,8 +21,14 @@ public class Board {
 	public void print() {		//hier mit lasse ich das Spielfeld ausgeben
 		for (int y = 0; y < LINES; y++) {
 		System.out.println();
+		if (y > 0) {
+			System.out.println("---+---+---");
+		}
 			for (int x= 0; x < ROWS; x++) {
-				System.out.print(board[y][x] + " ");
+				System.out.print(" " + board[y][x]);
+				if (x < 2) {
+					System.out.print(" |");
+				}
 			}
 		}
 	}
