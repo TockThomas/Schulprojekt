@@ -4,7 +4,8 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
-	String playerLetter, computerLetter, turn;
+	String playerLetter, computerLetter, turn, endInput;
+	boolean end;
 	Scanner scanner = new Scanner(System.in);
 	
 	public Game() {
@@ -17,7 +18,6 @@ public class Game {
 		System.out.println("\nMöchten Sie 'X' oder 'O' sein?");
 		while (true) {
 			playerLetter = scanner.next();
-//			System.out.println(player);
 			if (playerLetter.equals("X") || playerLetter.equals("x")) {
 				playerLetter = "X";
 				break;
@@ -44,7 +44,6 @@ public class Game {
 	
 	public String whoBegins() {
 		int randomNum = ThreadLocalRandom.current().nextInt(0, 1 + 1);
-//		System.out.println(randomNum);
 		if (randomNum == 1) {
 			turn = playerLetter;
 		} else {
@@ -60,6 +59,23 @@ public class Game {
 			turn = "X";
 		}
 		return turn;
+	}
+	
+	public boolean askForPlaying() {
+		System.out.println("\nWillst du nochmal Spielen?\nJ oder N?");
+		while (true) {
+			endInput = scanner.next();
+			if (endInput.equals("J") || endInput.equals("j")) {
+				end = true;
+				break;
+			} else if (endInput.equals("N") || endInput.equals("n")) {
+				end = false;
+				break;
+			} else {
+				System.out.println("Geben Sie eine gültige Antwort ein.");
+			}
+		}
+		return end;
 	}
 
 }
