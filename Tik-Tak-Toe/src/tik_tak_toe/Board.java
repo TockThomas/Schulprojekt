@@ -6,7 +6,7 @@ public class Board {
 	public static final int ROWS = 3;	// festlegung der Spaltenanzahl
 	public static final int SYMBOLS = 0;	//festlegung der Anzahl an Symbole, die in die Felder eingetragen werden
 	public static final String syms[] = {"A", "X", "O"};	//festlegung der möglichen Symbole
-	public boolean win = false;		// hier ist die variable, ob jemand gewonnen hat oder nicht
+	boolean win;		// hier ist die variable, ob jemand gewonnen hat oder nicht
 	
 	public Board() {
 		this.board = new String[LINES][ROWS];	// erstellung des Boadrds
@@ -34,7 +34,8 @@ public class Board {
 		}
 	}
 	// das sollte die Abfrage sein, ob jemand gewonnen hat oder nicht, bin mir nicht sicher, ob sie funktioniert, da ich sie noch nicht testen konnte
-	public void analyse() {		//hier wird überprüft, ob drei gleiche Symbole in einer Reihe sind
+	public boolean analyse() { //hier wird überprüft, ob drei gleiche Symbole in einer Reihe sind
+		win = false;
 		for (int y =  0; y < LINES; y++) {
 			for (int x = 0; x < ROWS - 2; x++) {
 				if (board[y][x] != "A" && board[y][x] == board[y][x + 1] && board[y][x + 1] == board[y][x + 2]) {
@@ -63,5 +64,6 @@ public class Board {
 				}
 			}
 		}
+		return win;
 	}
 }

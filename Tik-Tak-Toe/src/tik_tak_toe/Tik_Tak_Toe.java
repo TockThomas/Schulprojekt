@@ -26,9 +26,9 @@ public class Tik_Tak_Toe {
 					//weitere Befehle
 					turn = game.changeTurn(); //Wechselt, wer dran ist
 				}
-//				if (Hier sollte dein Überprüfen Methode sein) {//if, Spiel zu ende, wird "gameIsDone" auf true gelegt.
-//					gameIsDone = true;					
-//				}
+				if (b1.analyse()) {//if, Spiel zu ende, wird "gameIsDone" auf true gelegt.
+					gameIsDone = true;					
+				}
 			}
 			playing = game.askForPlaying();//Methode, um nachzufragen, ob man nochmal spielen will (ändert den var "playing"
 		}
