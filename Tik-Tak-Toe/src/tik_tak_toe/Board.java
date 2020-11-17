@@ -66,4 +66,15 @@ public class Board {
 		}
 		return win;
 	}
+	public Candidate freeField() {		// hiermit wird geschaut, ob ein Feld frei ist oder nicht.
+		for (int y = 0; y < LINES; y++) {
+			for (int x = 0; x < ROWS; x++) {
+				if (board[y][x] != "X" && board[y][x] != "O") {
+					Candidate x1 = new Candidate(y, x);		// wenn es ein freies Feld gibt, werden die y und x Kordinaten an Candidate weitergegeben.
+					return x1;
+				}
+			}
+		}
+		return null;	//falls es kein freies Feld mehr gibt, wird "null" weitergegebne
+	}
 }
