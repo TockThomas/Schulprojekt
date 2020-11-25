@@ -5,6 +5,7 @@ public class Tik_Tak_Toe {
 	public static void main(String[] args) {
 		Board b1 = new Board();		//Hier mit erstelle ich ein neues Objekt (glaub ich)
 		Game game = new Game();
+		int[] playerInput;
 		boolean playing = true, gameIsDone;
 		String player, computer, turn;
 		System.out.println("Willkommen bei Tik-Tak-Toe!");
@@ -19,15 +20,20 @@ public class Tik_Tak_Toe {
 			while (gameIsDone == false) { //Spiel beginnt
 				if (turn == player){//if, wenn Person dran ist
 					b1.print();
+					playerInput = game.playerturn();
+					if (b1.analyse()) {
+						gameIsDone = true;
+						System.out.println("Glueckwunsch, Sie haben gewonnen!");
+					}
 					//weitere Befehle
 					turn = game.changeTurn(); //Wechselt, wer dran ist
 				} else if (turn == computer) {//if, wenn computer dran ist
-					b1.print();	
+					if (b1.analyse()) {
+						gameIsDone = true;
+						System.out.println("Schade, Sie haben verloren!");
+					}
 					//weitere Befehle
 					turn = game.changeTurn(); //Wechselt, wer dran ist
-				}
-				if (b1.analyse()) {//if, Spiel zu ende, wird "gameIsDone" auf true gelegt.
-					gameIsDone = true;					
 				}
 			}
 			playing = game.askForPlaying();//Methode, um nachzufragen, ob man nochmal spielen will (ändert den var "playing"
